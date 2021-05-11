@@ -60,7 +60,7 @@ def contar_ganancia_con_limites():
             for k in range(len(peso)):
                 objetos[i + 1][j][k] = objetos[i + 1][j - pesoActual][k]
             if nueva_ganancia > ganancia[i][j]:
-                ganancia[i+1][j] = gananciaActual + ganancia[i+1][j-pesoActual]
+                ganancia[i+1][j] = nueva_ganancia
                 objetos[i+1][j][i] += 1
             else:
                 ganancia[i + 1][j] = ganancia[i][j]
@@ -68,6 +68,7 @@ def contar_ganancia_con_limites():
                     objetos[i + 1][j][k] = objetos[i][j][k]
     for i in range(len(peso)):
         print(f"{i}: {objetos[len(objetos)-1][len(objetos[0])-1][i]}")
+
 class main():
     global Presupuesto
     Presupuesto = 10
