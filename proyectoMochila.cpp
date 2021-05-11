@@ -1,3 +1,0 @@
-/*
-probando el commit xd
-*/
