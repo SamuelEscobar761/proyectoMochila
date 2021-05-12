@@ -1,86 +1,59 @@
 cantObjetos = []
+cantPesos = []
+cantDiferentesPesos = []
 Presupuesto = 0
 
 """limite de stock del producto"""
-cantidadMaxima = [2, 4, 10, 9, 20]
+cantidadMaxima = [7, 3, 2, 5, 6, 10]
 
-peso = [1, 2, 5, 7, 8]
+modeloAuto = {1: "Suzuki Swift", 2: "Santana", 4: "Nissan Patrol 2011", 5: "Lamborghini", 7: "BMW",
+              8: "Tesla Cybertruck"}
+costProd = [1, 2, 4, 5, 7, 8]
+
 """ranking del producto donde el mas comprado es el menor y el mayor es el menos comprado"""
-valor = [2, 5, 6, 10, 13]
-guardados = [0]
-
-
-def contarGanancia():
-    for i in range(len(peso)):
-        pesoActual = peso[i]
-        gananciaActual = valor[i]
-        for j in range(Presupuesto, pesoActual - 1, -1):
-            cantObjetos[j] = max(cantObjetos[j], cantObjetos[j - pesoActual] + gananciaActual)
+gananciaAnual = {1: 2, 2: 5, 4: 6, 5: 10, 7: 13, 8: 16}
 
 
 def contarGananciaLimite():
-    temp = [0]
-    for i in range(len(peso)):
-        costoActual = peso[i]
-        rankingActual = valor[i]
-        for x in range(cantidadMaxima[i]):
-            for j in range(Presupuesto, costoActual - 1, -1):
-                cantObjetos[j] = max(cantObjetos[j], cantObjetos[j - costoActual] + rankingActual)
-                if j == 50 and temp[len(temp) - 1] != cantObjetos[j]:
-                    temp.append(cantObjetos[j])
-                    guardados.append(temp[len(temp) - 1] - temp[len(temp) - 2])
+    for i in range(len(cantPesos)):
+        if (cantPesos[i] != 0):
+            pesoActual = i
+            valorActual = gananciaAnual[i]
+            for x in range(cantPesos[i]):
+                for j in range(Presupuesto, pesoActual - 1, -1):
+                    if cantObjetos[j - pesoActual] + valorActual > cantObjetos[j]:
 
+                        for k in range(len(cantDiferentesPesos[j])):
+                            cantDiferentesPesos[j][costProd[k]] = cantDiferentesPesos[j - pesoActual][costProd[k]]
+                        cantDiferentesPesos[j][pesoActual] = cantDiferentesPesos[j][pesoActual] + 1
+                        cantObjetos[j] = cantObjetos[j - pesoActual] + valorActual
 
-''' 5 5 2 2 2 2 '''
-
-def contar_ganancia_con_limites():
-    ganancia = []
-    objetos = []
-    for i in range(len(peso)+1):
-        nueva_lista = []
-        nueva_lista_objetos = []
-        ganancia.append(nueva_lista)
-        objetos.append(nueva_lista_objetos)
-        for j in range(Presupuesto+1):
-            lista_objetos = []
-            ganancia[i].append(0)
-            objetos[i].append(lista_objetos)
-            for k in range(len(peso)):
-                objetos[i][j].append(0)
-
-    for i in range(len(peso)):
-        pesoActual = peso[i]
-        gananciaActual = valor[i]
-        for j in range(pesoActual):
-            ganancia[i+1][j] = ganancia[i][j]
-            for k in range(len(peso)):
-                objetos[i + 1][j][k] = objetos[i][j][k]
-        for j in range(pesoActual, Presupuesto+1):
-            nueva_ganancia = gananciaActual + ganancia[i+1][j-pesoActual]
-            for k in range(len(peso)):
-                objetos[i + 1][j][k] = objetos[i + 1][j - pesoActual][k]
-            if nueva_ganancia > ganancia[i][j]:
-                ganancia[i+1][j] = nueva_ganancia
-                objetos[i+1][j][i] += 1
-            else:
-                ganancia[i + 1][j] = ganancia[i][j]
-                for k in range(len(peso)):
-                    objetos[i + 1][j][k] = objetos[i][j][k]
-    for i in range(len(peso)):
-        print(f"{i}: {objetos[len(objetos)-1][len(objetos[0])-1][i]}")
 
 class main():
     global Presupuesto
-    Presupuesto = 10
-    # for i in range(Presupuesto + 1):
-    #     cantObjetos.append(0)
-    # contarGananciaLimite()
-    # cont = 0
-    # for i in cantObjetos:
-    #     print("[{}: {}]".format(cont, i), end=" ")
-    #     cont += 1
-    # print(cantObjetos[Presupuesto])
-    #
-    # for i in guardados:
-    #     print("[{}]".format(i), end=" ")
-    contar_ganancia_con_limites()
+    Presupuesto = 100
+    for i in range(Presupuesto + 1):
+        cantObjetos.append(0)
+        cantPesos.append(0)
+        cantidades = {}
+        for j in costProd:
+            cantidades[j] = 0
+        cantDiferentesPesos.append(cantidades)
+
+    for i in range(len(costProd)):
+        cantPesos[costProd[i]] = cantidadMaxima[i]
+
+    contarGananciaLimite()
+
+    print(cantDiferentesPesos[Presupuesto])
+    cont = 0
+    for i in cantObjetos:
+        print("[{}: {}]".format(cont, i), end=" ")
+        cont += 1
+    print()
+    print("Ganancia Maxima", cantObjetos[Presupuesto])
+
+    for i in cantDiferentesPesos[Presupuesto]:
+        if cantDiferentesPesos[Presupuesto][i] != 0:
+            print(f"Producir {cantDiferentesPesos[Presupuesto][i]} de {modeloAuto[i]}")
+
