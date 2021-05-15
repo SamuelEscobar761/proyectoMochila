@@ -20,6 +20,8 @@ Instalación Paso a Paso:
 
 - Definir una ubicación donde se guardara los archivos del programa usando el comando ( **cd &quot;ruta de ubicación&quot;** )
 
+(reemplazar todo backslash por slash)
+
 - Clonar el repositorio con el comando ( **git clone** [**https://github.com/SamuelEscobar761/proyectoMochila.git**](https://github.com/SamuelEscobar761/proyectoMochila.git))
 
-- Ejecutar el archivo &quot;proyectoMochila.py&quot; en uno de los entornos de desarrollo interactivo para Python.
+- Ejecutar el archivo &quot;proyectoMochila.py&quot; en uno de los entornos de desarrollo interactivo para Python.arrollo interactivo para Python.
