@@ -74,24 +74,42 @@ def ChoiceExample(NroEjemplo):
         Presupuesto = 2000
         Mochila(Presupuesto)
 
+
     elif (NroEjemplo == 5):
-        cantidadMaxima = [10, 15, 5, 11, 21, 24]
-        productos = {94: "Adidas Nemeziz 19", 85: "Adidas Mutator", 93: "Adidas The Predator",
-                     84: "Nike Mercurial Superfly 8 Elite FG", 72: "Nike Mercurial Vapor 14 Elite FG",
-                     81: "Nike Phantom GT Elite Dynamic Fit 3D FG"}
-        costProd = [94, 85, 93, 84, 72, 81]
-        ganancias = [60, 70, 57, 56, 33, 66]
-        Presupuesto = 1000
+
+        cantidadMaxima = [20, 20, 46, 23, 78, 46, 12]
+
+        productos = {30: "Panetón Gustossi", 40: "Panetón La Francesa ChocoChip", 80: "Panetón D'onfrio Chocotón",
+
+                     120: "Panetón Anapqui Real", 20: "Panetón Todinno",
+
+                     42: "Panetón San Gabriel", 35: "Panetón San Gabriel Deli-Choc"}
+
+        costProd = [30, 40, 80, 120, 20, 42, 35]
+
+        ganancias = [35, 48, 90, 140, 23, 50, 46]
+
+        Presupuesto = 2500
+
         Mochila(Presupuesto)
 
+
     elif (NroEjemplo == 6):
-        cantidadMaxima = [10, 15, 5, 11, 21, 24]
-        productos = {94: "Adidas Nemeziz 19", 85: "Adidas Mutator", 93: "Adidas The Predator",
-                     84: "Nike Mercurial Superfly 8 Elite FG", 72: "Nike Mercurial Vapor 14 Elite FG",
-                     81: "Nike Phantom GT Elite Dynamic Fit 3D FG"}
-        costProd = [94, 85, 93, 84, 72, 81]
-        ganancias = [60, 70, 57, 56, 33, 66]
-        Presupuesto = 1000
+
+        cantidadMaxima = [10, 16, 30, 32, 20, 25, 14, 20]
+
+        productos = {450: "PlayStation 5", 355: "PlayStation 5 Online Edition", 480: "XBOX Series X",
+
+                     280: "XBOX Series S", 245: "Nintendo Switch",
+
+                     200: "Nintendo Switch Lite", 380: "PlayStation 4 Pro", 400: "XBOX One X"}
+
+        costProd = [450, 355, 480, 280, 245, 200, 380, 400]
+
+        ganancias = [500, 400, 500, 300, 285, 220, 410, 440]
+
+        Presupuesto = 21000
+
         Mochila(Presupuesto)
     
     elif(NroEjemplo == 0):
