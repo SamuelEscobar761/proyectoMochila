@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\samue\Documents\UPB\Algoritmica1\proyectoMochila\venv"
+VIRTUAL_ENV="C:\Users\samue\OneDrive\Documentos\UPB\Algoritmica1\proyectoMochila\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

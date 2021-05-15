@@ -1,4 +1,3 @@
-import numpy as np
 """Una lista que guarda las ganancias maximas para cada presupuesto hasta el presupuiesto dado"""
 cantObjetos = []
 """una lista donde se guardan diccionarios para poder tener las cantidades usadas para cada producto"""
@@ -22,7 +21,7 @@ def contarGananciaLimite(PresupuestoActual):
                     for k in range(len(cantDiferentesPesos[j])):
                         cantDiferentesPesos[j][costProd[k]] = cantDiferentesPesos[j-pesoActual][costProd[k]]
                     cantDiferentesPesos[j][pesoActual] = cantDiferentesPesos[j][pesoActual]+1                    
-                    cantObjetos[j] = cantObjetos[j-pesoActual]+ valorActual
+                    cantObjetos[j] = cantObjetos[j-pesoActual] + valorActual
                 
 def ChoiceExample(NroEjemplo):
     global cantidadMaxima
@@ -38,11 +37,31 @@ def ChoiceExample(NroEjemplo):
     costProd.clear()
     ganancias.clear()
     if(NroEjemplo == 1):
-        cantidadMaxima = [7, 3, 2, 5, 6, 10]
-        productos = {1:"Suzuki Swift", 2:"Santana", 4:"Nissan Patrol 2011", 5:"Lamborghini", 7:"BMW", 8:"Tesla Cybertruck"}
-        costProd =  [1, 2, 4, 5, 7, 8]
-        ganancias = [2, 5, 6, 10, 13, 16]
-        Presupuesto = 100
+        cantidadMaxima = [2, 3, 2, 4, 3, 2]
+        productos = {6592: "Suzuki Swift", 1360: "Suzuki Santana", 16000: "Nissan Patrol 2011", 200000: "Lamborghini URUS", 39580: "BMW X7", 15960: "Tesla Cybertruck RWD"}
+        costProd = [6592, 1360, 16000, 200000, 39580, 15960]
+        ganancias = [9888, 2040, 24000, 300000, 59370, 23940]
+        Presupuesto = 300000
+        Mochila(Presupuesto)
+
+    elif(NroEjemplo==2):
+        cantidadMaxima = [7, 8, 5, 6, 8, 3]
+        productos = {94: "Adidas Nemeziz 19", 85: "Adidas Mutator", 93: "Adidas The Predator",
+                     84: "Nike Mercurial Superfly 8 Elite FG", 72: "Nike Mercurial Vapor 14 Elite FG",
+                     81: "Nike Phantom GT Elite Dynamic Fit 3D FG"}
+        costProd = [94, 85, 93, 84, 72, 81]
+        ganancias = [40, 36, 40, 36, 31, 35]
+        Presupuesto = 1000
+        Mochila(Presupuesto)
+
+    elif(NroEjemplo==3):
+        cantidadMaxima = [10, 15, 5, 11, 21, 24]
+        productos = {94: "Adidas Nemeziz 19", 85: "Adidas Mutator", 93: "Adidas The Predator",
+                     84: "Nike Mercurial Superfly 8 Elite FG", 72: "Nike Mercurial Vapor 14 Elite FG",
+                     81: "Nike Phantom GT Elite Dynamic Fit 3D FG"}
+        costProd = [94, 85, 93, 84, 72, 81]
+        ganancias = [60, 70, 57, 56, 33, 66]
+        Presupuesto = 1000
         Mochila(Presupuesto)
     
     elif(NroEjemplo == 0):
